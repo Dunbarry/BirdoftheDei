@@ -1,8 +1,32 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.mainContain{
+  margin-left: 7.5vw;
 }
 
-a {
-  color: #00B7FF;
+.headerSpan{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header{
+  margin-bottom: 0;
+}
+
+.jumbotron{
+  width: 85vw;
+  height:40vw;
+  margin-top: .5vw;
+}
+
+.director{
+  width:5vw;
+  height:2.5vw;
+  float:right;
+  font-style: italic;
+}
+
+.btn-success{
+  width: 15vw;
+  margin-right: 7.5vw;
+  margin-bottom: 1vw;
 }
