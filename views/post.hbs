@@ -3,7 +3,7 @@
   <span class="headerSpan">
     <p class="header">Mythological Birds and where to find them!</p>
   </span>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="/post" method="POST">
     <fieldset>
       <legend class="legend">Tell us about your bird of the dei:</legend>
       <div class="form-group">
@@ -15,7 +15,7 @@
       <div class="form-group">
         <label for="inputTitle" class="col-lg-2 control-label">Title</label>
         <div class="col-lg-10">
-          <input type="password" class="form-control" id="inputTitle" placeholder="Title">
+          <input type="text" class="form-control" id="inputTitle" placeholder="Title">
           <!-- <div class="checkbox">
             <label>
               <input type="checkbox"> Checkbox
@@ -31,8 +31,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-lg-2 control-label">Radios</label>
-        <div class="col-lg-10">
+        <!-- <label class="col-lg-2 control-label">Radios</label> -->
+        <!-- <div class="col-lg-10">
           <div class="radio">
             <label>
               <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
@@ -45,7 +45,7 @@
               Option two can be something else
             </label>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Selects</label>
@@ -70,7 +70,7 @@
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="reset" class="btn btn-default">Cancel</button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </div>
       </div>
     </fieldset>
