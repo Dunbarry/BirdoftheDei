@@ -7,7 +7,7 @@ function posts() {
 }
 
 // "Create"
-router.post('/post', function(req, res){
+router.post('/', function(req, res){
   posts().insert({
     username: req.body.username,
     title: req.body.title,
