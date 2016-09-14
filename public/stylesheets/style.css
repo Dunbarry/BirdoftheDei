@@ -25,6 +25,13 @@ form{
   width: 85vw;
   height:40vw;
   margin-top: .5vw;
+  padding-top: 0vw !important;
+  padding-bottom: .5vw;
+  padding:0vw;
+}
+
+.displayData > h4{
+  margin-bottom:5vw;
 }
 
 .director{
