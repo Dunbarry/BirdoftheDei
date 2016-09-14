@@ -18,11 +18,12 @@ router.get('/post', function(req, res, next) {
 
 /* GET viewPost page. */
 router.get('/post/:id', function(req, res, next) {
-  posts().where('id', req.params.id).then(function(result){
+  posts().first().where('id', req.params.id).then(function(post){
+    console.log(post)
     res.render('viewPost', {
-      username: req.body.username,
-      title: req.body.title,
-      content: req.body.content
+      username: post.username,
+      title: post.title,
+      content: post.content
     })
   });
 });
