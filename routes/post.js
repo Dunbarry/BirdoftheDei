@@ -19,23 +19,23 @@ router.post('/', function(req, res){
   });
 });
 // "Read"
-router.get('/', function(req, res){
-  posts().select().then(function(result){
-    res.json(result);
-  });
-});
+// router.get('/', function(req, res){
+//   posts().select().then(function(result){
+//     res.json(result);
+//   });
+// });
 // "Update"
-router.get('/:id', function(req, res){
-  posts().where('id', req.params.id).then(function(result){
-    res.json(result);
-  });
-});
-// "Delete"
-router.delete('/:id', function(req, res){
-  posts().where('id', req.params.id).del().then(function(result){
-    res.json(result);
-  });
-});
+// router.get('/post/:id', function(req, res){
+//   posts().where('id', req.params.id).then(function(result){
+//     res.json(result);
+//   });
+// });
+// // "Delete"
+// router.delete('/post/:id', function(req, res){
+//   posts().where('id', req.params.id).del().then(function(result){
+//     res.json(result);
+//   });
+// });
 
 
 /* GET post page. */
