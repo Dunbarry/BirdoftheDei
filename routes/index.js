@@ -64,34 +64,26 @@ router.get('/post/:id', function(req, res, next){
       result.username= post.username;
       result.title= post.title;
       result.content= post.content;
+    });
+  comments().where('post_id',req.params.id)
+    .then(function(comments){
+      comments=comments[0];
+      console.log(comments)
+      result.commentUser= comments.username;
+      result.commentContent= comments.content;
+      result.commentTime= comments.created_at;
 
       res.render('viewPost', {
         result:result,
         username:result.username,
         title:result.title,
         content:result.content,
-        // commentUser:result.commentUser,
-        // commentContent:result.commentUser,
-        // commentTime:result.commentTime
-      })
-    })
-  // comments().where('post_id', req.params.id)
-  //   .then(function(comments){
-  //     result.commentUser= comments.username;
-  //     result.commentContent= comments.content;
-  //     result.commentTime= comments.created_at
-  //   })
-  // postImOn=req.params.id;
-  // res.render('viewPost', {
-  //   result:result,
-  //   username:result.username,
-  //   title:result.title,
-  //   content:result.content,
-  //   // commentUser:result.commentUser,
-  //   // commentContent:result.commentUser,
-  //   // commentTime:result.commentTime
-  // })
-});
+        commentUser:result.commentUser,
+        commentContent:result.commentContent,
+        commentTime:result.commentTime
+      });
+    });
+  });
 
 router.post('/comments', function(req, res){
   console.log("Here.")

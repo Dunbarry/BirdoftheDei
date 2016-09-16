@@ -19,7 +19,7 @@
     <div class="legend">Leave a comment!</div>
   </legend>
   <div class="jumbotron">
-    <form class="form-horizontal" action="/comments" method="POST">
+    <form class="form-horizontal commentAdd" action="/comments" method="POST">
       <fieldset>
         <div class="form-group">
           <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
@@ -43,8 +43,8 @@
       </fieldset>
     </form>
     <div class="commentView">
-      <div>
-        {{commentUsername}}
+      <div class="top">
+        {{commentUser}} says:
       </div>
       <div>
         {{commentContent}}
