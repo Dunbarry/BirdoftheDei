@@ -11,13 +11,6 @@ function comments() {
   return knex('comments');
 }
 
-function postFinder(){
-  var url1=postImOn.length-3;
-  var url2=postImOn.length-2;
-  console.log(url1+url2);
-  return url1+url2;
-}
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bird of the Dei' });
@@ -55,10 +48,10 @@ router.post('/comments', function(req, res){
   console.log("Here.")
   comments().insert({
     username: req.body.username,
-    content: req.body.title,
+    content: req.body.content,
     timeStamp: new Date().getTime()/1000,
     postId: postImOn
-  }, 'id').then(function(results){
+  }, 'postId', postImOn).then(function(results){
     res.redirect('/post/'+results[0]);
   });
 });
