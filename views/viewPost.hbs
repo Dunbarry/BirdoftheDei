@@ -15,3 +15,32 @@
       {{content}}
     </div>
   </div>
+  <legend>
+    <div class="legend">Leave a comment!</div>
+  </legend>
+  <div class="jumbotron">
+    <form class="form-horizontal" action="/comments" method="POST">
+      <fieldset>
+        <div class="form-group">
+          <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="textArea" class="col-lg-2 control-label">Comment:</label>
+          <div class="col-lg-10">
+            <textarea class="form-control" rows="6" name="content" id="textArea"></textarea>
+            <span class="help-block">Please be thoughtful and kind.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

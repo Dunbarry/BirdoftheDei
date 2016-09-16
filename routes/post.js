@@ -8,7 +8,7 @@ function posts() {
 
 // "Create"
 router.post('/', function(req, res){
-  console.log("Here.")
+  console.log("There.")
   posts().insert({
     username: req.body.username,
     title: req.body.title,

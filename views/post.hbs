@@ -3,23 +3,26 @@
   <span class="headerSpan">
     <p class="header">Mythological Birds and where to find them!</p>
   </span>
+  <legend>
+    <div class="legend">Tell us about your bird of the dei:</div>
+  </legend>
   <form class="form-horizontal" action="/Post" method="POST">
     <fieldset>
-      <legend class="legend">Tell us about your bird of the dei:</legend>
+      <!-- <legend class="legend">Tell us about your bird of the dei:</legend> -->
       <div class="form-group">
-        <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+        <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
         <div class="col-lg-10">
           <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputTitle" class="col-lg-2 control-label">Title</label>
+        <label for="inputTitle" class="col-lg-2 control-label">Title:</label>
         <div class="col-lg-10">
           <input type="text" class="form-control" name="title" id="inputTitle" placeholder="Title">
         </div>
       </div>
       <div class="form-group">
-        <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+        <label for="textArea" class="col-lg-2 control-label">Post:</label>
         <div class="col-lg-10">
           <textarea class="form-control" rows="6" name="content" id="textArea"></textarea>
           <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
