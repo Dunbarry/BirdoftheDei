@@ -19,9 +19,8 @@ router.post('/comments', function(req, res){
   comments().insert({
     username: req.body.username,
     content: req.body.content,
-    timeStamp: new Date().getTime()/1000,
-    postId: postImOn
-  }, 'postId', postImOn).then(function(results){
+    post_id: postImOn
+  }, 'post_id', postImOn).then(function(results){
     res.redirect('/post/'+results[0]);
   });
 });

@@ -26,8 +26,7 @@ form{
   height:40vw;
   margin-top: .5vw;
   padding-top: 0vw !important;
-  padding-bottom: .5vw;
-  padding:0vw;
+  padding:.75vw;
 }
 
 .displayData > h4{

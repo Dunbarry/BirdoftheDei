@@ -13,7 +13,6 @@ router.post('/', function(req, res){
     username: req.body.username,
     title: req.body.title,
     content: req.body.content,
-    timeStamp: new Date().getTime()/1000,
   }, 'id').then(function(results){
     res.redirect('/post/'+results[0]);
   });
@@ -37,6 +36,23 @@ router.post('/', function(req, res){
 //   });
 // });
 
+// router.get('/post/:id', function(req, res, next){
+//   postImOn=req.params.id;
+//   posts().first().where('id', req.params.id)
+//     .then(function(post){
+//       username: post.username;
+//       title: post.title;
+//       content: post.content
+//     })
+//     .then(comments().where('id', req.params.post_id))
+//     .then(function(commments){
+//       commentorUsername: comments.username;
+//       commentorContent: comments.content;
+//       commentorTime: comments.created_at
+//     })
+//     // postImOn=req.params.id;
+//     .then(res.render('viewPost'))
+//   });
 
 /* GET post page. */
 router.get('/post', function(req, res, next) {

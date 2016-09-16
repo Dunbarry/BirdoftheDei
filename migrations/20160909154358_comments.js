@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments('')
     table.text('username')
     table.text('content')
-    table.text('timeStamp')
-    table.text('postId')
+    table.timestamp('created_at')
+    table.integer('post_id')
   })
 };
 

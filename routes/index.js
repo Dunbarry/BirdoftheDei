@@ -32,16 +32,65 @@ router.get('/post', function(req, res, next) {
 //   });
 // });
 
+// /* GET viewPost page. */
+// router.get('/post/:id', function(req, res, next){
+//   postImOn=req.params.id;
+//   console.log("Here",postImOn)
+//   posts().where('id', req.params.id)
+//     .then(function(post){
+//       username: post.username
+//       title: post.title
+//       content: post.content
+//     })
+//     .then(comments().where('id', req.params.post_id))
+//     .then(function(post){
+//       commentorUsername: post.username
+//       commentorContent: post.content
+//       commentorTime: post.created_at
+//     })
+//     // postImOn=req.params.id;
+//     .then(res.render('viewPost'))
+//   });
+
 /* GET viewPost page. */
-router.get('/post/:id', function(req, res, next) {
-  posts().first().where('id', req.params.id).then(function(post){
-    postImOn=req.params.id;
-    res.render('viewPost', {
-      username: post.username,
-      title: post.title,
-      content: post.content
+router.get('/post/:id', function(req, res, next){
+  postImOn=req.params.id;
+  var result={};
+  console.log("Here",postImOn)
+  posts().where('id', req.params.id)
+    .then(function(post){
+      post=post[0];
+      console.log(post);
+      result.username= post.username;
+      result.title= post.title;
+      result.content= post.content;
+
+      res.render('viewPost', {
+        result:result,
+        username:result.username,
+        title:result.title,
+        content:result.content,
+        // commentUser:result.commentUser,
+        // commentContent:result.commentUser,
+        // commentTime:result.commentTime
+      })
     })
-  });
+  // comments().where('post_id', req.params.id)
+  //   .then(function(comments){
+  //     result.commentUser= comments.username;
+  //     result.commentContent= comments.content;
+  //     result.commentTime= comments.created_at
+  //   })
+  // postImOn=req.params.id;
+  // res.render('viewPost', {
+  //   result:result,
+  //   username:result.username,
+  //   title:result.title,
+  //   content:result.content,
+  //   // commentUser:result.commentUser,
+  //   // commentContent:result.commentUser,
+  //   // commentTime:result.commentTime
+  // })
 });
 
 router.post('/comments', function(req, res){
@@ -49,9 +98,8 @@ router.post('/comments', function(req, res){
   comments().insert({
     username: req.body.username,
     content: req.body.content,
-    timeStamp: new Date().getTime()/1000,
-    postId: postImOn
-  }, 'postId', postImOn).then(function(results){
+    post_id: postImOn
+  }, 'post_id', postImOn).then(function(results){
     res.redirect('/post/'+results[0]);
   });
 });
