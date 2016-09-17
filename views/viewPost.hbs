@@ -42,13 +42,19 @@
         </div>
       </fieldset>
     </form>
-    <div class="commentView">
-      <div class="top">
-        {{commentUser}} says:
-      </div>
-      <div>
-        {{commentContent}}
-      </div>
-    </div>
+    {{#if comments}}
+        {{#each result.commentary}}
+          <div class="commentView">
+            <div class="top">
+              {{username}} says:
+            </div>
+            <div>
+              {{content}}
+            </div>
+          </div>
+        {{/each}}
+    {{else}}
+      <p>Be the first to comment!</p>
+    {{/if}}
   </div>
 </div>

@@ -66,22 +66,18 @@ router.get('/post/:id', function(req, res, next){
       result.content= post.content;
     });
   comments().where('post_id',req.params.id)
-    .then(function(comments){
-      comments=comments[0];
-      console.log(comments)
-      result.commentUser= comments.username;
-      result.commentContent= comments.content;
-      result.commentTime= comments.created_at;
-
+    .then(function(commentArray){
+      // console.log(commentArray)
+      result.commentary=commentArray;
+      // console.log(result.commentary);
       res.render('viewPost', {
         result:result,
         username:result.username,
         title:result.title,
         content:result.content,
-        commentUser:result.commentUser,
-        commentContent:result.commentContent,
-        commentTime:result.commentTime
+        comments:result.commentary
       });
+      console.log(result.commentary[0].username)
     });
   });
 
