@@ -23,11 +23,10 @@ form{
 
 .jumbotron{
   width: 85vw;
-  height:40vw;
+  height:auto;
   margin-top: .5vw;
   padding-top: 0vw !important;
-  padding-bottom: .5vw;
-  padding:0vw;
+  padding:.75vw;
 }
 
 .displayData > h4{
@@ -45,4 +44,29 @@ form{
   width: 15vw;
   margin-right: 7.5vw;
   margin-bottom: 1vw;
+}
+
+.commentAdd{
+  margin-bottom:2.5vw;
+}
+
+.commentView{
+  display: flex;
+  flex-flow: column;
+  border-top: .5vw ridge grey;
+  border-bottom: .5vw ridge grey;
+  width: 73.5vw;
+  margin-left: 6vw;
+  padding-left: 1vw;
+
+  font-size: 1.5vw;
+}
+
+.commentView > div{
+  margin-left: 3vw;
+}
+
+.commentView > .top{
+  margin-bottom:.5vw;
+  margin-left: 0;
 }
