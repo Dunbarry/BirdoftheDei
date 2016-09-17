@@ -14,13 +14,15 @@ function comments() {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   posts().then(function(posts){
-    console.log(posts)
     res.render('index', {
       title: 'Bird of the Dei',
       posts:posts,
       firstPostTitle:posts[0].title,
       firstPostContent:posts[0].content,
       firstPostId:posts[0].id,
+      secondPostTitle:posts[1].title,
+      secondPostContent:posts[1].content,
+      secondPostId:posts[1].id
     });
   });
 });
@@ -29,17 +31,6 @@ router.get('/', function(req, res, next) {
 router.get('/post', function(req, res, next) {
   res.render('post', { title: 'Bird of the Dei' });
 });
-
-// router.get('/comments/:commentId', function(req, res, next) {
-//   posts().first().where('commentId', req.params.id).then(function(post){
-//     console.log(post)
-//     res.render('viewPost', {
-//       username: post.username,
-//       title: post.title,
-//       content: post.content
-//     })
-//   });
-// });
 
 /* GET viewPost page. */
 router.get('/post/:id', function(req, res, next){
