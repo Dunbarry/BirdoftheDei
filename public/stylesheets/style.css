@@ -41,6 +41,9 @@ form{
 .mainPostDisplay{
   height: 20vw;
   width: 49%;
+  overflow: hidden;
+  border: .25vw inset darkgrey;
+  padding: .75vw;
 }
 
 .mpdTop{
@@ -50,6 +53,11 @@ form{
 .labelLatest{
   position: absolute;
   z-index: 10;
+}
+
+.labelPost{
+  margin-right: 4vw;
+  margin-bottom: 3vw;
 }
 
 .displayData > h4{
