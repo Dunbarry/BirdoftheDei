@@ -29,6 +29,29 @@ form{
   padding:.75vw;
 }
 
+.mainDisplay{
+  display:flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  padding: .5vw;
+  padding-top: .5vw !important;
+  padding-bottom: .5vw !important;
+}
+
+.mainPostDisplay{
+  height: 20vw;
+  width: 49%;
+}
+
+.mpdTop{
+  margin-bottom: 1.25vw;
+}
+
+.labelLatest{
+  position: absolute;
+  z-index: 10;
+}
+
 .displayData > h4{
   margin-bottom:5vw;
 }
@@ -69,4 +92,5 @@ form{
 .commentView > .top{
   margin-bottom:.5vw;
   margin-left: 0;
+  border-top: 0;
 }
