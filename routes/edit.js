@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+postToEdit=0;
 
 function posts() {
   return knex('posts');
@@ -10,23 +11,44 @@ function posts() {
 router.get('/:id/edit', function(req, res, next) {
   posts().first().where('id', req.params.id)
   .then(function(post){
+    console.log(post)
     res.render('editPost', {
       title: 'Bird of the Dei',
       post:post,
       title:post.title,
       user:post.username,
       content:post.content,
+      id: post.id
     });
   });
 });
 
-router.post('/edit', function(req, res){
+// router.put('/post/:id/update', function(req, res){
+//   console.log("Right here!")
+//   console.log(postToEdit)
+//   posts().where('id', postToEdit)
+//   .update({
+//     username: req.body.username,
+//     title: req.body.title,
+//     content: req.body.content,
+//   }, 'id', postToEdit)
+//   .then(function(results){
+//     console.log(results)
+//     res.redirect('/post/'+results[0]);
+//   });
+// });
+
+router.all('/post/:id/update', function(req, res, next){
   console.log("Right here!")
-  comments().insert({
+  console.log(postToEdit)
+  posts().where('id', postToEdit)
+  next().update({
     username: req.body.username,
+    title: req.body.title,
     content: req.body.content,
-    post_id: postImOn
-  }, 'post_id', postImOn).then(function(results){
+  }, 'id', postToEdit)
+  .then(function(results){
+    console.log(results)
     res.redirect('/post/'+results[0]);
   });
 });
