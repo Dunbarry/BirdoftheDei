@@ -8,26 +8,26 @@
   <legend>
     <div class="legend">Tell us about your bird of the dei:</div>
   </legend>
-  <form class="form-horizontal" action="/Post" method="POST">
+  <form class="form-horizontal" action="/post/{{id}}/update" method="POST">
     <fieldset>
       <!-- <legend class="legend">Tell us about your bird of the dei:</legend> -->
       <div class="form-group">
         <label for="inputUsername" class="col-lg-2 control-label">Username:</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username">
+          <input type="text" class="form-control" id="inputUsername" name="username" placeholder="{{user}}">
         </div>
       </div>
       <div class="form-group">
         <label for="inputTitle" class="col-lg-2 control-label">Title:</label>
         <div class="col-lg-10">
-          <input type="text" class="form-control" name="title" id="inputTitle" placeholder="Title">
+          <input type="text" class="form-control" name="title" id="inputTitle" placeholder="{{title}}">
         </div>
       </div>
       <div class="form-group">
         <label for="textArea" class="col-lg-2 control-label">Post:</label>
         <div class="col-lg-10">
-          <textarea class="form-control" rows="6" name="content" id="textArea"></textarea>
-          <span class="help-block">We can't wait to read it!</span>
+          <textarea class="form-control" rows="6" name="content" id="textArea">{{content}}</textarea>
+          <span class="help-block">We agree, this version is much better!</span>
         </div>
       </div>
       <div class="form-group">
