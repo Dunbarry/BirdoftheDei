@@ -17,12 +17,22 @@ router.get('/', function(req, res, next) {
     res.render('index', {
       title: 'Bird of the Dei',
       posts:posts,
+      // first pane
       firstPostTitle:posts[0].title,
       firstPostContent:posts[0].content,
       firstPostId:posts[0].id,
+      // second pane
       secondPostTitle:posts[1].title,
       secondPostContent:posts[1].content,
       secondPostId:posts[1].id
+      // third pane
+      thirdPostTitle:posts[2].title,
+      thirdPostContent:posts[2].content,
+      thirdPostId:posts[2].id
+      // fourth pane
+      fourthPostTitle:posts[3].title,
+      fourthPostContent:posts[3].content,
+      fourthPostId:posts[3].id
     });
   });
 });
