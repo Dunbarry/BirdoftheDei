@@ -1,12 +1,36 @@
 <div class="mainContain">
-  <h1>Bird of the Dei</h1>
+  <h1>
+    <a href='/'>Bird of the Dei</a>
+  </h1>
   <span class="headerSpan">
     <p class="header">Mythological Birds and where to find them!</p>
     <a href="/post" class="btn btn-success">Post!</a>
   </span>
-  <div class="jumbotron">
-    <h1>Latest!</h1>
-    <p>This is where the latest posts will be displayed upon arrival to the page. 841x272</p>
+  <div class="jumbotron mainDisplay">
+    <div class="mainPostDisplay mpdTop">
+      <h2 class="labelPost">
+        <a href='/post/{{firstPostId}}'>{{firstPostTitle}}</a>
+      </h2>
+      {{firstPostContent}}
+    </div>
+    <div class="mainPostDisplay mpdTop">
+      <h2 class="labelPost">
+        <a href='/post/{{secondPostId}}'>{{secondPostTitle}}</a>
+      </h2>
+      {{secondPostContent}}
+    </div>
+    <div class="mainPostDisplay">
+      <h2 class="labelPost">
+        <a href='/post/{{firstPostId}}'>{{firstPostTitle}}</a>
+      </h2>
+      {{firstPostContent}}
+    </div>
+    <div class="mainPostDisplay">
+      <h2 class="labelPost">
+        <a href='/post/{{firstPostId}}'>{{firstPostTitle}}</a>
+      </h2>
+      {{firstPostContent}}
+    </div>
   </div>
   <!-- <div>
     <span>See more!
