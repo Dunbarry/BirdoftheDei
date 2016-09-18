@@ -24,15 +24,15 @@ router.get('/', function(req, res, next) {
       // second pane
       secondPostTitle:posts[1].title,
       secondPostContent:posts[1].content,
-      secondPostId:posts[1].id
+      secondPostId:posts[1].id,
       // third pane
-      thirdPostTitle:posts[2].title,
-      thirdPostContent:posts[2].content,
-      thirdPostId:posts[2].id
-      // fourth pane
-      fourthPostTitle:posts[3].title,
-      fourthPostContent:posts[3].content,
-      fourthPostId:posts[3].id
+      // thirdPostTitle:posts[2].title,
+      // thirdPostContent:posts[2].content,
+      // thirdPostId:posts[2].id,
+      // // fourth pane
+      // fourthPostTitle:posts[3].title,
+      // fourthPostContent:posts[3].content,
+      // fourthPostId:posts[3].id
     });
   });
 });
@@ -64,6 +64,20 @@ router.get('/post/:id', function(req, res, next){
       title:result.title,
       content:result.content,
       comments:result.commentary
+    });
+  });
+});
+
+/* GET edit post page. */
+router.get('/:id/edit', function(req, res, next) {
+  posts().first().where('id', req.params.id)
+  .then(function(post){
+    res.render('editPost', {
+      title: 'Bird of the Dei',
+      post:post,
+      title:post.title,
+      user:post.username,
+      content:post.content,
     });
   });
 });
