@@ -7,13 +7,6 @@ function comments() {
   return knex('comments');
 }
 
-// function postFinder(){
-//   var url1=postImOn.length-3;
-//   var url2=postImOn.length-2;
-//   console.log(url1+url2);
-//   return url1+url2;
-// }
-
 router.post('/comments', function(req, res){
   console.log("Here.")
   comments().insert({
