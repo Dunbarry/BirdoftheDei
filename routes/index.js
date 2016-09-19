@@ -71,6 +71,7 @@ router.get('/post/:id', function(req, res, next){
 
 /* GET edit post page. */
 router.get('/:id/edit', function(req, res, next) {
+  console.log("Index");
   posts().first().where('id', req.params.id)
   .then(function(post){
     console.log(post)
