@@ -13,7 +13,7 @@ function comments() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  posts().orderBy('id', 'desc')
+  posts().orderBy('id', 'desc').limit(4)
   .then(function(posts){
     res.render('index', {
       posts:posts,
@@ -54,7 +54,7 @@ router.get('/post/:id', function(req, res, next){
 });
 
 /* GET edit post page. */
-router.get('/:id/edit', function(req, res, next) {
+router.get('/post/:id/edit', function(req, res, next) {
   posts().first().where('id', req.params.id)
   .then(function(post){
     console.log(post)
@@ -84,34 +84,10 @@ router.put('/:id/update', function(req, res){
   });
 });
 
-router.get('post/:id/del',function(req,res, next){
-  console.log("Index deleting!")
-  posts().where('id', req.params.id).del()
-  .then(function(){
-    res.redirect('/')
-  })
-})
-
-router.post('/comments', function(req, res){
-  console.log("Here.")
-  comments().insert({
-    username: req.body.username,
-    content: req.body.content,
-    post_id: postImOn
-  }, 'post_id', postImOn).then(function(results){
-    res.redirect('/post/'+results[0]);
-  });
-});
-function posts() {
-  return knex('posts');
-}
-
-
-
 router.post('/post/:id/del',function(req,res, next){
   posts().where('id', req.params.id).del()
   .then(function(){
-    console.log("del deleting!")
+    console.log("Index deleting!")
     res.redirect('/')
   })
 })
