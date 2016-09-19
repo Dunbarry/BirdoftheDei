@@ -7,12 +7,10 @@ function posts() {
   return knex('posts');
 }
 
-router.delete('/:id/del',function(req,res){
-  console.log("deleting!")
-  posts().remove({
-    id: req.params.id,
-  })
+router.post('post/:id/del',function(req,res, next){
+  posts().where('id', req.params.id).del()
   .then(function(){
+    console.log("del deleting!")
     res.redirect('/')
   })
 })

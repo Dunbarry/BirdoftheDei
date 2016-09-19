@@ -7,6 +7,10 @@ function posts() {
   return knex('posts');
 }
 
+
+
+
+
 // This file is unnecessary
 
 module.exports = router;

@@ -5,33 +5,13 @@
     <a href="/post" class="btn btn-success">Post!</a>
   </span>
   <div class="jumbotron mainDisplay">
+  {{#each posts}}
     <div class="mainPostDisplay mpdTop">
       <h2 class="labelPost">
-        <a href='/post/{{firstPostId}}'>{{firstPostTitle}}</a>
+        <a href='/post/{{id}}'>{{title}}</a>
       </h2>
-      {{firstPostContent}}
+      {{content}}
     </div>
-    <div class="mainPostDisplay mpdTop">
-      <h2 class="labelPost">
-        <a href='/post/{{secondPostId}}'>{{secondPostTitle}}</a>
-      </h2>
-      {{secondPostContent}}
-    </div>
-    <div class="mainPostDisplay">
-      <h2 class="labelPost">
-        <a href='/post/{{thirdPostId}}'>{{thirdPostTitle}}</a>
-      </h2>
-      {{thirdPostContent}}
-    </div>
-    <div class="mainPostDisplay">
-      <h2 class="labelPost">
-        <a href='/post/{{fourthPostId}}'>{{fourthPostTitle}}</a>
-      </h2>
-      {{fourthPostContent}}
-    </div>
+    {{/each}}
   </div>
-  <!-- <div>
-    <span>See more!
-      <div class="arrowDown"></div>
-    </span>
-  </div> -->
+  </div>

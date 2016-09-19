@@ -18,7 +18,7 @@ router.post('/', function(req, res){
   });
 });
 
-router.put('/post/:id/update', function(req, res, next){
+router.all('/post/:id/update', function(req, res, next){
   console.log("Right here!")
   console.log(postToEdit)
   posts().where('id', postToEdit)

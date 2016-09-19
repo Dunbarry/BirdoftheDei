@@ -13,26 +13,10 @@ function comments() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  posts().then(function(posts){
+  posts().orderBy('id', 'desc')
+  .then(function(posts){
     res.render('index', {
-      title: 'Bird of the Dei',
       posts:posts,
-      // first pane
-      firstPostTitle:posts[0].title,
-      firstPostContent:posts[0].content,
-      firstPostId:posts[0].id,
-      // second pane
-      secondPostTitle:posts[1].title,
-      secondPostContent:posts[1].content,
-      secondPostId:posts[1].id,
-      // third pane
-      thirdPostTitle:posts[2].title,
-      thirdPostContent:posts[2].content,
-      thirdPostId:posts[2].id,
-      // fourth pane
-      fourthPostTitle:posts[3].title,
-      fourthPostContent:posts[3].content,
-      fourthPostId:posts[3].id
     });
   });
 });
@@ -71,7 +55,6 @@ router.get('/post/:id', function(req, res, next){
 
 /* GET edit post page. */
 router.get('/:id/edit', function(req, res, next) {
-  console.log("Index");
   posts().first().where('id', req.params.id)
   .then(function(post){
     console.log(post)
@@ -86,7 +69,7 @@ router.get('/:id/edit', function(req, res, next) {
   });
 });
 
-router.put('/post/:id/update', function(req, res){
+router.put('/:id/update', function(req, res){
   console.log("Right here!")
   console.log(postToEdit)
   posts().where('id', postToEdit)
@@ -101,11 +84,9 @@ router.put('/post/:id/update', function(req, res){
   });
 });
 
-router.delete('/:id/del',function(req,res){
-  console.log("deleting!")
-  posts().remove({
-    id: req.params.id,
-  })
+router.get('post/:id/del',function(req,res, next){
+  console.log("Index deleting!")
+  posts().where('id', req.params.id).del()
   .then(function(){
     res.redirect('/')
   })
@@ -121,5 +102,19 @@ router.post('/comments', function(req, res){
     res.redirect('/post/'+results[0]);
   });
 });
+function posts() {
+  return knex('posts');
+}
+
+
+
+router.post('/post/:id/del',function(req,res, next){
+  posts().where('id', req.params.id).del()
+  .then(function(){
+    console.log("del deleting!")
+    res.redirect('/')
+  })
+})
+
 
 module.exports = router;
