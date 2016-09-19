@@ -26,13 +26,13 @@ router.get('/', function(req, res, next) {
       secondPostContent:posts[1].content,
       secondPostId:posts[1].id,
       // third pane
-      // thirdPostTitle:posts[2].title,
-      // thirdPostContent:posts[2].content,
-      // thirdPostId:posts[2].id,
-      // // fourth pane
-      // fourthPostTitle:posts[3].title,
-      // fourthPostContent:posts[3].content,
-      // fourthPostId:posts[3].id
+      thirdPostTitle:posts[2].title,
+      thirdPostContent:posts[2].content,
+      thirdPostId:posts[2].id,
+      // fourth pane
+      fourthPostTitle:posts[3].title,
+      fourthPostContent:posts[3].content,
+      fourthPostId:posts[3].id
     });
   });
 });
@@ -46,11 +46,11 @@ router.get('/post', function(req, res, next) {
 router.get('/post/:id', function(req, res, next){
   postImOn=req.params.id;
   var result={};
-  console.log("Here",postImOn)
   posts().where('id', req.params.id)
   .then(function(post){
     post=post[0];
     console.log(post);
+    result.id=post.id;
     result.username= post.username;
     result.title= post.title;
     result.content= post.content;
@@ -60,6 +60,7 @@ router.get('/post/:id', function(req, res, next){
     result.commentary=commentArray;
     res.render('viewPost', {
       result:result,
+      id:result.id,
       username:result.username,
       title:result.title,
       content:result.content,
@@ -99,6 +100,16 @@ router.put('/post/:id/update', function(req, res){
   });
 });
 
+router.delete('/:id/del',function(req,res){
+  console.log("deleting!")
+  posts().remove({
+    id: req.params.id,
+  })
+  .then(function(){
+    res.redirect('/')
+  })
+})
+
 router.post('/comments', function(req, res){
   console.log("Here.")
   comments().insert({
@@ -109,4 +120,5 @@ router.post('/comments', function(req, res){
     res.redirect('/post/'+results[0]);
   });
 });
+
 module.exports = router;

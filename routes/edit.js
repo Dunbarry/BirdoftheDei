@@ -38,19 +38,4 @@ router.get('/:id/edit', function(req, res, next) {
 //   });
 // });
 
-router.all('/post/:id/update', function(req, res, next){
-  console.log("Right here!")
-  console.log(postToEdit)
-  posts().where('id', postToEdit)
-  next().update({
-    username: req.body.username,
-    title: req.body.title,
-    content: req.body.content,
-  }, 'id', postToEdit)
-  .then(function(results){
-    console.log(results)
-    res.redirect('/post/'+results[0]);
-  });
-});
-
 module.exports = router;

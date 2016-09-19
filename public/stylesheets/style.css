@@ -15,10 +15,12 @@ form{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height:3vw;
 }
 
 .header{
   margin-bottom: 0;
+
 }
 
 .jumbotron{
@@ -89,7 +91,7 @@ form{
   margin-left: 6vw;
   padding: 1vw;
 
-  font-size: 1.5vw;
+  font-size: 1.25vw;
 }
 
 .commentView > div{

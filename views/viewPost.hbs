@@ -4,6 +4,15 @@
   </h1>
   <span class="headerSpan">
     <p class="header">Mythological Birds and where to find them!</p>
+    <form class="form-horizontal commentAdd" action="/{{id}}/del" method="POST">
+      <fieldset>
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="submit" class="btn btn-primary" id="submit">Delete This Post!</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
     <a href="/post" class="btn btn-success">Post!</a>
   </span>
   <div class="jumbotron">
