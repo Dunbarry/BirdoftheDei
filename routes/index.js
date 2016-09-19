@@ -69,18 +69,14 @@ router.get('/post/:id/edit', function(req, res, next) {
   });
 });
 
-router.put('/:id/update', function(req, res){
+router.post('/post/:id/update', function(req, res, next){
   console.log("Right here!")
-  console.log(postToEdit)
-  posts().where('id', postToEdit)
+  posts().where('id', req.params.id)
   .update({
-    username: req.body.username,
-    title: req.body.title,
     content: req.body.content,
-  }, 'id', postToEdit)
-  .then(function(results){
-    console.log(results)
-    res.redirect('/post/'+results[0]);
+  })
+  .then(function(){
+    res.redirect('/post/'+req.params.id);
   });
 });
 
