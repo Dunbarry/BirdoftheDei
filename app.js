@@ -14,6 +14,7 @@ var users = require('./routes/users');
 var post = require('./routes/post');
 var comments = require('./routes/comments');
 var edit = require('./routes/edit');
+var del = require('./routes/del');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/users', users);
 app.use('/post', post);
 app.use('/comments', comments);
 app.use('/edit', edit);
+app.use('/del', del);
 const port = process.env.PORT
 
 // catch 404 and forward to error handler

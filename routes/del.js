@@ -7,10 +7,12 @@ function posts() {
   return knex('posts');
 }
 
-
-
-
-
-// This file is unnecessary
+router.post('post/:id/del',function(req,res, next){
+  posts().where('id', req.params.id).del()
+  .then(function(){
+    console.log("del deleting!")
+    res.redirect('/')
+  })
+})
 
 module.exports = router;

@@ -13,26 +13,10 @@ function comments() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  posts().then(function(posts){
+  posts().orderBy('id', 'desc').limit(4)
+  .then(function(posts){
     res.render('index', {
-      title: 'Bird of the Dei',
       posts:posts,
-      // first pane
-      firstPostTitle:posts[0].title,
-      firstPostContent:posts[0].content,
-      firstPostId:posts[0].id,
-      // second pane
-      secondPostTitle:posts[1].title,
-      secondPostContent:posts[1].content,
-      secondPostId:posts[1].id,
-      // third pane
-      // thirdPostTitle:posts[2].title,
-      // thirdPostContent:posts[2].content,
-      // thirdPostId:posts[2].id,
-      // // fourth pane
-      // fourthPostTitle:posts[3].title,
-      // fourthPostContent:posts[3].content,
-      // fourthPostId:posts[3].id
     });
   });
 });
@@ -46,11 +30,11 @@ router.get('/post', function(req, res, next) {
 router.get('/post/:id', function(req, res, next){
   postImOn=req.params.id;
   var result={};
-  console.log("Here",postImOn)
   posts().where('id', req.params.id)
   .then(function(post){
     post=post[0];
     console.log(post);
+    result.id=post.id;
     result.username= post.username;
     result.title= post.title;
     result.content= post.content;
@@ -60,6 +44,7 @@ router.get('/post/:id', function(req, res, next){
     result.commentary=commentArray;
     res.render('viewPost', {
       result:result,
+      id:result.id,
       username:result.username,
       title:result.title,
       content:result.content,
@@ -69,7 +54,7 @@ router.get('/post/:id', function(req, res, next){
 });
 
 /* GET edit post page. */
-router.get('/:id/edit', function(req, res, next) {
+router.get('/post/:id/edit', function(req, res, next) {
   posts().first().where('id', req.params.id)
   .then(function(post){
     console.log(post)
@@ -84,7 +69,7 @@ router.get('/:id/edit', function(req, res, next) {
   });
 });
 
-router.put('/post/:id/update', function(req, res){
+router.put('/:id/update', function(req, res){
   console.log("Right here!")
   console.log(postToEdit)
   posts().where('id', postToEdit)
@@ -99,14 +84,13 @@ router.put('/post/:id/update', function(req, res){
   });
 });
 
-router.post('/comments', function(req, res){
-  console.log("Here.")
-  comments().insert({
-    username: req.body.username,
-    content: req.body.content,
-    post_id: postImOn
-  }, 'post_id', postImOn).then(function(results){
-    res.redirect('/post/'+results[0]);
-  });
-});
+router.post('/post/:id/del',function(req,res, next){
+  posts().where('id', req.params.id).del()
+  .then(function(){
+    console.log("Index deleting!")
+    res.redirect('/')
+  })
+})
+
+
 module.exports = router;
