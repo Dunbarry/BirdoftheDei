@@ -7,6 +7,6 @@ module.exports = {
 
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL
+    connection: process.env.'postgresql-lively-37778'
   }
 }
