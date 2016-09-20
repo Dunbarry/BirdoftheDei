@@ -70,7 +70,7 @@ router.get('/post/:id/edit', function(req, res, next) {
 });
 
 router.post('/post/:id/update', function(req, res, next){
-  console.log("Right here!")
+  console.log("Index update!")
   posts().where('id', req.params.id)
   .update({
     content: req.body.content,
@@ -88,5 +88,15 @@ router.post('/post/:id/del',function(req,res, next){
   })
 })
 
+router.post('/comments', function(req, res){
+  console.log("Here.")
+  comments().insert({
+    username: req.body.username,
+    content: req.body.content,
+    post_id: postImOn
+  }, 'post_id', postImOn).then(function(results){
+    res.redirect('/post/'+results[0]);
+  });
+});
 
 module.exports = router;
