@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
+var app = express();
 var postImOn=0;
 
 function posts() {
@@ -14,7 +15,7 @@ function comments() {
 var pg = require('pg');
 
 app.get('/db', function (request, response) {
-  pg.connect(process.env.'postgresql-lively-37778', function(err, client, done) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
