@@ -11,6 +11,20 @@ function comments() {
   return knex('comments');
 }
 
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.'postgresql-lively-37778', function(err, client, done) {
+    client.query('SELECT * FROM test_table', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   posts().orderBy('id', 'desc').limit(4)
