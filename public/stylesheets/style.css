@@ -103,3 +103,7 @@ form{
   margin-left: 0;
   border-top: 0;
 }
+
+.form-control{
+  white-space: pre-line !important;
+}
